@@ -1,8 +1,8 @@
 #!/bin/bash -x
 
 #SBATCH -J test_job     # overridden by commandline argument              
-#SBATCH -o zel_everything/scratch/job_logs/stdout_%j # overridden by commandline argument
-#SBATCH -e zel_everything/scratch/job_logs/stderr_%j # overridden by commandline argument
+#SBATCH -o NeSLET_everything/scratch/job_logs/stdout_%j # overridden by commandline argument
+#SBATCH -e NeSLET_everything/scratch/job_logs/stderr_%j # overridden by commandline argument
 #SBATCH --qos=dcs-48hr
 #SBATCH --time=47:00:00
 #SBATCH --gres=gpu:6
@@ -14,18 +14,18 @@
 #---------------------------------------------------------------
 # Example usage: 
 
-# sbatch -J job -o zel_everything/scratch/log/stdout_%j -e zel_everything/scratch/log/stderr_%j --export=ALL,code_dir='zel_everything/ZEL/code/blink/blink',experiment_dir='zel_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin' pipeline_typed_4.sh
+# sbatch -J job -o NeSLET_everything/scratch/log/stdout_%j -e NeSLET_everything/scratch/log/stderr_%j --export=ALL,code_dir='NeSLET_everything/NeSLET/code/blink/blink',experiment_dir='NeSLET_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='NeSLET_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin' pipeline_typed_4.sh
 
 #---------------------------------------------------------------
 
 
 # Pick these variables from the environment or uncomment and initialize them below
 
-# # something like zel_everything/ZEL/code/blink/blink
-# code_dir=zel_everything/ZEL/code/blink/blink
+# # something like NeSLET_everything/NeSLET/code/blink/blink
+# code_dir=NeSLET_everything/NeSLET/code/blink/blink
 
 # # place to store all the outputs
-# experiment_dir=zel_everything/scratch/pipeline_output_dir
+# experiment_dir=NeSLET_everything/scratch/pipeline_output_dir
 
 # # Allowed training_dataset_name : blink_wiki, fget_wiki_um, fget_wiki_conll, pipeline_test
 # training_dataset_name="pipeline_test"
@@ -40,7 +40,7 @@
 # types_key="fgetc_category_id"
 
 
-# base_model='zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin'
+# base_model='NeSLET_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin'
 
 
 
@@ -49,7 +49,7 @@ then
    num_types=768
    type_embedding_dim=768
    type_loss_weight=1.0
-   type_vectors_file=zel_everything/scratch-shared/data/type_vectors/bert-base/dbpedia_2020_types.t7
+   type_vectors_file=NeSLET_everything/scratch-shared/data/type_vectors/bert-base/dbpedia_2020_types.t7
 elif [[ $types_key =  "fgetc_category_id" ]]
 then
    num_types=60000
@@ -58,13 +58,13 @@ then
    
    if [[ $training_dataset_name =  "fget_wiki_um" ]]
    then
-      type_vectors_file=zel_everything/scratch-shared/data/type_vectors/bert-base/unseen_60K_categories.t7
+      type_vectors_file=NeSLET_everything/scratch-shared/data/type_vectors/bert-base/unseen_60K_categories.t7
    elif [[ $training_dataset_name =  "fget_wiki_conll" ]]
    then
-      type_vectors_file=zel_everything/scratch-shared/data/type_vectors/bert-base/conll_60K_categories.t7
+      type_vectors_file=NeSLET_everything/scratch-shared/data/type_vectors/bert-base/conll_60K_categories.t7
    elif [[ $training_dataset_name =  "pipeline_test" ]]
    then
-      type_vectors_file=zel_everything/scratch-shared/data/type_vectors/bert-base/dbpedia_2020_types.t7
+      type_vectors_file=NeSLET_everything/scratch-shared/data/type_vectors/bert-base/dbpedia_2020_types.t7
    else
       echo "Type vectors file is unavailable. Pipeline aborted."
       exit
@@ -79,27 +79,27 @@ fi
 
 #------------------
 
-entities_file=zel_everything/scratch-shared/facebook_original_models/entity.jsonl
-saved_cand_ids_file=zel_everything/scratch-shared/entity_token_ids_128.t7
+entities_file=NeSLET_everything/scratch-shared/facebook_original_models/entity.jsonl
+saved_cand_ids_file=NeSLET_everything/scratch-shared/entity_token_ids_128.t7
 
 #------------------
 
-wiki_blink_training_file=zel_everything/scratch-shared/saswati/data/100percent_dbpedia_type_desc_ance/train_dbpedia_types_desc_ances.jsonl
-wiki_blink_val_file=zel_everything/scratch-shared/saswati/data/100percent_dbpedia_type_desc_ance/valid_dbpedia_types_desc_ances.jsonl
+wiki_blink_training_file=NeSLET_everything/scratch-shared/saswati/data/100percent_dbpedia_type_desc_ance/train_dbpedia_types_desc_ances.jsonl
+wiki_blink_val_file=NeSLET_everything/scratch-shared/saswati/data/100percent_dbpedia_type_desc_ance/valid_dbpedia_types_desc_ances.jsonl
 
 ## for um val and test
-wiki_blink_val_2_file=zel_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_dev_10K_dbpedia_ancs_desc.jsonl
-wiki_blink_test_file=zel_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_test_10K_updated_dbpedia_ancs_desc.jsonl
+wiki_blink_val_2_file=NeSLET_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_dev_10K_dbpedia_ancs_desc.jsonl
+wiki_blink_test_file=NeSLET_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_test_10K_updated_dbpedia_ancs_desc.jsonl
 
 ## for conll val and test
-#wiki_blink_val_2_file=zel_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_dev_4791_dbpedia_types_desc_ances.jsonl
-#wiki_blink_test_file=zel_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485_updated_dbpedia_types_desc_ances.jsonl
+#wiki_blink_val_2_file=NeSLET_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_dev_4791_dbpedia_types_desc_ances.jsonl
+#wiki_blink_test_file=NeSLET_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485_updated_dbpedia_types_desc_ances.jsonl
 
 
 #------------------
 
-wiki_fget_um_training_file=zel_everything/scratch-shared/data/fget_processed_data/wiki_fget_data_processed/wiki_fget_mention_train_5.6M_for_unseen_60K_updated_dbpedia_types_desc_ances.jsonl
-wiki_fget_um_val_file=zel_everything/scratch-shared/data/fget_processed_data/wiki_fget_data_processed/new_um_valid_dbpedia_type_desc_ance.jsonl
+wiki_fget_um_training_file=NeSLET_everything/scratch-shared/data/fget_processed_data/wiki_fget_data_processed/wiki_fget_mention_train_5.6M_for_unseen_60K_updated_dbpedia_types_desc_ances.jsonl
+wiki_fget_um_val_file=NeSLET_everything/scratch-shared/data/fget_processed_data/wiki_fget_data_processed/new_um_valid_dbpedia_type_desc_ance.jsonl
 wiki_fget_um_val_2_file=zel_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_dev_10K_dbpedia_ancs_desc.jsonl
 wiki_fget_um_test_file=zel_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_test_10K_updated_dbpedia_ancs_desc.jsonl
 

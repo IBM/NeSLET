@@ -15,9 +15,9 @@ app = Flask(__name__)
 
 
 
-mapper = WikiMapper("zel_everything/ZEL/data/wikimap_data/index_enwiki-latest.db")
+mapper = WikiMapper("NeSLET_everything/ZEL/data/wikimap_data/index_enwiki-latest.db")
 
-models_path="zel_everything/ZEL/code/blink/blink/trained_models/hnm_5percent/"
+models_path="NeSLET_everything/NeSLET/code/blink/blink/trained_models/hnm_5percent/"
 
 config = {
         "test_entities": None,
@@ -27,7 +27,7 @@ config = {
         "biencoder_model": models_path + "pytorch_model.bin",
         "biencoder_config": models_path + "config.json",
 
-        "entity_catalogue":   "zel_everything/ZEL/code/blink/blink/trained_models/hnm_5percent/entity.jsonl",
+        "entity_catalogue":   "NeSLET_everything/NeSLET/code/blink/blink/trained_models/hnm_5percent/entity.jsonl",
 
         "biencoder_training_params":models_path+"training_params.txt",
 
@@ -42,7 +42,7 @@ config = {
         }
 
 
-with open("zel_everything/ZEL/code/blink/blink/trained_models/hnm_5percent/wiki2dbr.pkl", "rb") as filein:
+with open("NeSLET_everything/NeSLET/code/blink/blink/trained_models/hnm_5percent/wiki2dbr.pkl", "rb") as filein:
      wikimap = pickle.load(filein, encoding="utf-8")
 
 entity_cat=config["entity_catalogue"]

@@ -215,21 +215,21 @@ if args.debug == False:
             logger=logger,
         )
 else:
-    with open('zel_everything/pipeline_test/type_err_analysis/cache/title2id.json') as fp:
+    with open('NeSLET_everything/pipeline_test/type_err_analysis/cache/title2id.json') as fp:
         title2id = json.load(fp)
 
-    with open('zel_everything/pipeline_test/type_err_analysis/cache/id2title.json') as fp:
+    with open('NeSLET_everything/pipeline_test/type_err_analysis/cache/id2title.json') as fp:
         id2title = json.load(fp)
 
     id2title = {int(k): v for k, v in id2title.items()}
 
-    with open('zel_everything/pipeline_test/type_err_analysis/cache/wikipedia_id2local_id.json') as fp:
+    with open('NeSLET_everything/pipeline_test/type_err_analysis/cache/wikipedia_id2local_id.json') as fp:
         wikipedia_id2local_id = json.load(fp)
 
     wikipedia_id2local_id = {int(k): v for k, v in wikipedia_id2local_id.items()}
 
 
-    with open('zel_everything/pipeline_test/type_err_analysis/cache/id2text.json') as fp:
+    with open('NeSLET_everything/pipeline_test/type_err_analysis/cache/id2text.json') as fp:
         id2text = json.load(fp)
 
     id2text = {int(k): v for k, v in id2text.items()}

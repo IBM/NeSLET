@@ -6,10 +6,10 @@ import numpy as np
 torch.manual_seed(0)
 np.random.seed(0)
 
-model_file_path = 'zel_everything/null_entity_classifier/svm/final_model.pkl'
-#model_file_path = 'zel_everything/null_entity_classifier/logistic_regression//final_model.pkl'
+model_file_path = 'NeSLET_everything/null_entity_classifier/svm/final_model.pkl'
+#model_file_path = 'NeSLET_everything/null_entity_classifier/logistic_regression//final_model.pkl'
 
-data_path = 'zel_everything/ZEL/data_dinesh/aca/ZEL_unique_client_inferred_validated_1_fw_scores_added.t7'
+data_path = 'NeSLET_everything/ZEL/data_dinesh/aca/ZEL_unique_client_inferred_validated_1_fw_scores_added.t7'
 
 data = torch.load(data_path)
 no_features  = data.shape[1] - 1

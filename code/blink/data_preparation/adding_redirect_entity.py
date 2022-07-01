@@ -16,8 +16,8 @@ with open('/shared_data/entity_wikiredirect_2020.pkl','rb')as handle:
 
 print(entities_redirects['<http://dbpedia.org/resource/83_(film)>'])
 
-Entity_file_blink="/ZEL/code/blink/blink/models/entity.jsonl"
-entity_page_id_mapping='/ZEL/code/blink/blink/data/20210301_dump/wiki_title_pageid_mapping_20210301_dump.json'
+Entity_file_blink="/NeSLET/code/blink/blink/models/entity.jsonl"
+entity_page_id_mapping='/NeSLET/code/blink/blink/data/20210301_dump/wiki_title_pageid_mapping_20210301_dump.json'
 
 with open(entity_page_id_mapping) as f:
   entity_pageid_map = json.load(f)

@@ -116,4 +116,4 @@ dependencies:
     - urllib3==1.24.3
     - wcwidth==0.2.5
     - wrapt==1.12.1
-prefix: zel_everything/anaconda3/envs/blink_nmd
+prefix: NeSLET_everything/anaconda3/envs/blink_nmd

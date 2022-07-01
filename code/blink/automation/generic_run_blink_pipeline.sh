@@ -13,7 +13,7 @@
 
 # Pick these variables from the environment or uncomment and initialize them below
 
-# something like /ZEL/code/blink/blink
+# something like /NeSLET/code/blink/blink
 code_dir=$1
 
 # place to store all the outputs

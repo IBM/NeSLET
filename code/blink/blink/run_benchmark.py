@@ -9,8 +9,8 @@ DATASETS = [
     {
         "name": "wikipedia - WNED-WIKI (WIKI) 10K ",
         #"name": "Conll-Yago-4485-test",
-        #"filename": "zel_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485.json"
-        "filename": "zel_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_test_10K.jsonl"
+        #"filename": "NeSLET_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485.json"
+        "filename": "NeSLET_everything/scratch-shared/data/fget_processed_data/unseen_mention_fget_data_processed/unseen_60K_mention_test_10K.jsonl"
     }]
 #    {
 #        "name": "AIDA-YAGO2 testa",
@@ -33,10 +33,10 @@ parser.add_argument("--biencoder_config", type=str,help="Path to the biencoder c
 parser.add_argument("--biencoder_training_params", type=str)
 parser.add_argument("--entity_encoding",type=str,help="Path to the entity catalogue.")
 #################################################
-parser.add_argument("--entity_catalogue",type=str,default="zel_everything/scratch-shared/facebook_original_models/entity.jsonl", help="Path to the entity catalogue.")
+parser.add_argument("--entity_catalogue",type=str,default="NeSLET_everything/scratch-shared/facebook_original_models/entity.jsonl", help="Path to the entity catalogue.")
  # crossencoder
-parser.add_argument("--crossencoder_model",type=str, default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin", help="Path to the crossencoder model.")
-parser.add_argument("--crossencoder_config",type=str,default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",help="Path to the crossencoder configuration.")
+parser.add_argument("--crossencoder_model",type=str, default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin", help="Path to the crossencoder model.")
+parser.add_argument("--crossencoder_config",type=str,default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",help="Path to the crossencoder configuration.")
 parser.add_argument("--top_k", type=int, default=100, help="Number of candidates retrieved by biencoder.")
 parser.add_argument("--faiss_index", type=str, default=None, help="whether to use faiss index")
 parser.add_argument("--index_path", type=str, default=None, help="path to load indexer")

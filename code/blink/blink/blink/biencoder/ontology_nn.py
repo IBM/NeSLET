@@ -155,7 +155,7 @@ def test_godel():
     # ontology.json has [-1,0,1,1,2,2,2,3,-1,8,8,8,10,10]
 
     config = {
-        "ontology_file": "zel_everything/projects/ontology.json",
+        "ontology_file": "NeSLET_everything/projects/ontology.json",
         "prob_aggregation": "godel"
     }
 
@@ -199,7 +199,7 @@ def test_lukasiewicz():
     # right now, this function can't catch logic errors
 
     config = {
-        "ontology_file": "zel_everything/projects/ontology.json",
+        "ontology_file": "NeSLET_everything/projects/ontology.json",
         "prob_aggregation": "lukasiewicz"
     }
 
@@ -244,7 +244,7 @@ def test_weighted_lukasiewicz():
     # right now, this function can't catch logic errors
 
     config = {
-        "ontology_file": "zel_everything/projects/ontology.json",
+        "ontology_file": "NeSLET_everything/projects/ontology.json",
         "prob_aggregation": "weighted_lukasiewicz",
         "num_types": 14
     }

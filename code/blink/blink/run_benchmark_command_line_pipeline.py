@@ -18,20 +18,20 @@ parser.add_argument("--entity_encoding", type=str, help="Path to the entity cata
 parser.add_argument(
     "--entity_catalogue",
     type=str,
-    default="zel_everything/scratch-shared/facebook_original_models/entity.jsonl",
+    default="NeSLET_everything/scratch-shared/facebook_original_models/entity.jsonl",
     help="Path to the entity catalogue.",
 )
 # crossencoder
 parser.add_argument(
     "--crossencoder_model",
     type=str,
-    default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin",
+    default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin",
     help="Path to the crossencoder model.",
 )
 parser.add_argument(
     "--crossencoder_config",
     type=str,
-    default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",
+    default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",
     help="Path to the crossencoder configuration.",
 )
 parser.add_argument(

@@ -8,19 +8,19 @@ class SubmitterBase:
 
         self.base_models = {
             "blink_wiki": {
-                0.01: "zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin",
-                0.1: "zel_everything/scratch-shared/blink_output/p_blink_0_1/hnm_training_output_dir/pytorch_model.bin",
-                1.0: "zel_everything/scratch-shared/blink_output/p_blink_1/hnm_training_output_dir/pytorch_model.bin",
+                0.01: "NeSLET_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin",
+                0.1: "NeSLET_everything/scratch-shared/blink_output/p_blink_0_1/hnm_training_output_dir/pytorch_model.bin",
+                1.0: "NeSLET_everything/scratch-shared/blink_output/p_blink_1/hnm_training_output_dir/pytorch_model.bin",
             },
             "fget_wiki_um": {
-                0.01: "zel_everything/scratch-shared/blink_output/p_fget_wiki_um_0_01/hnm_training_output_dir/pytorch_model.bin",
-                0.1: "zel_everything/scratch-shared/blink_output/p_fget_wiki_um_0_1/hnm_training_output_dir/pytorch_model.bin",
-                1.0: "zel_everything/scratch-shared/blink_output/p_fget_wiki_um_1/hnm_training_output_dir/pytorch_model.bin",
+                0.01: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_um_0_01/hnm_training_output_dir/pytorch_model.bin",
+                0.1: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_um_0_1/hnm_training_output_dir/pytorch_model.bin",
+                1.0: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_um_1/hnm_training_output_dir/pytorch_model.bin",
             },
             "fget_wiki_conll": {
-                0.01: "zel_everything/scratch-shared/blink_output/p_fget_wiki_conll_0_0_1/hnm_training_output_dir/pytorch_model.bin",
-                0.1: "zel_everything/scratch-shared/blink_output/p_fget_wiki_conll_0_1/hnm_training_output_dir/pytorch_model.bin",
-                1.0: "zel_everything/scratch-shared/blink_output/p_fget_wiki_conll_1/hnm_training_output_dir/pytorch_model.bin",
+                0.01: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_conll_0_0_1/hnm_training_output_dir/pytorch_model.bin",
+                0.1: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_conll_0_1/hnm_training_output_dir/pytorch_model.bin",
+                1.0: "NeSLET_everything/scratch-shared/blink_output/p_fget_wiki_conll_1/hnm_training_output_dir/pytorch_model.bin",
             },
         }
 
@@ -36,7 +36,7 @@ class Submitter4(SubmitterBase):
         super().__init__(config)
 
     def build_submission_command(self, exp_dir, dataset_name, data_percentage, num_epochs, base_model):
-        # "sbatch -J job -o zel_everything/scratch/log/stdout_%j -e zel_everything/scratch/log/stderr_%j --export=ALL,code_dir='zel_everything/ZEL/code/blink/blink',experiment_dir='zel_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin' pipeline_typed_4.sh"
+        # "sbatch -J job -o NeSLET_everything/scratch/log/stdout_%j -e NeSLET_everything/scratch/log/stderr_%j --export=ALL,code_dir='NeSLET_everything/NeSLET/code/blink/blink',experiment_dir='NeSLET_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='NeSLET_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin' pipeline_typed_4.sh"
 
         command_template = "sbatch -J job -o {stdout_path} -e {stderr_path} --export=ALL,code_dir='{code_dir}',experiment_dir='{exp_dir}',training_dataset_name='{dataset_name}',percentage_training_data_to_use={data_percentage},num_vanilla_training_epochs={num_epochs},num_hnm_training_epochs={num_epochs},types_key='fine_types_id',base_model='{base_model}' {pipeline_script_path}"
 
@@ -84,7 +84,7 @@ class Submitter5(SubmitterBase):
         super().__init__(config)
 
     def build_submission_command(self, exp_dir, dataset_name, data_percentage, num_epochs, base_model, prob_aggregation):
-        # sbatch -J job -o zel_everything/scratch/log/stdout_%j -e zel_everything/scratch/log/stderr_%j --export=ALL,code_dir='zel_everything/ZEL/code/blink/blink',experiment_dir='zel_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin',prob_aggregation='godel' pipeline_typed_5.sh
+        # sbatch -J job -o zel_everything/scratch/log/stdout_%j -e zel_everything/scratch/log/stderr_%j --export=ALL,code_dir='zel_everything/NeSLET/code/blink/blink',experiment_dir='zel_everything/scratch/pipeline_out',training_dataset_name='pipeline_test',percentage_training_data_to_use=100,num_vanilla_training_epochs=2,num_hnm_training_epochs=2,types_key='fine_types_id',base_model='zel_everything/scratch-shared/blink_output/p_blink_0_01/hnm_training_output_dir/pytorch_model.bin',prob_aggregation='godel' pipeline_typed_5.sh
 
         command_template = "sbatch -J job -o {stdout_path} -e {stderr_path} --export=ALL,code_dir='{code_dir}',experiment_dir='{exp_dir}',training_dataset_name='{dataset_name}',percentage_training_data_to_use={data_percentage},num_vanilla_training_epochs={num_epochs},num_hnm_training_epochs={num_epochs},types_key='fine_types_id',base_model='{base_model}',prob_aggregation='{prob_aggregation}' {pipeline_script_path}"
 
@@ -133,7 +133,7 @@ class Submitter5(SubmitterBase):
 
 if __name__ == "__main__":
     """
-    python zel_everything/ZEL/code/blink/automation/pipeline_typed_job_submitter.py --base_dir zel_everything/scratch-shared/blink_output/hard_param_sharing --pipeline_script zel_everything/ZEL/code/blink/automation/run_pipeline_typed_4.sh --code_dir zel_everything/ZEL/code/blink/blink --type_model 5
+    python zel_everything/NeSLET/code/blink/automation/pipeline_typed_job_submitter.py --base_dir zel_everything/scratch-shared/blink_output/hard_param_sharing --pipeline_script zel_everything/NeSLET/code/blink/automation/run_pipeline_typed_4.sh --code_dir zel_everything/NeSLET/code/blink/blink --type_model 5
     """
     parser = argparse.ArgumentParser()
     parser.add_argument("--base_dir", type=str)

@@ -162,4 +162,4 @@ dependencies:
     - sentencepiece==0.1.85
     - tokenizers==0.9.4
     - transformers==4.1.1
-prefix: zel_everything/scratch/anaconda3ppc/envs/blinkppc
+prefix: NeSLET_everything/scratch/anaconda3ppc/envs/blinkppc

@@ -8,7 +8,7 @@ import blink.candidate_ranking.utils as utils
 DATASETS = [
     {
         "name": "Conll-Yago-4485-test",
-        "filename": "zel_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485.json"
+        "filename": "NeSLET_everything/scratch-shared/data/fget_processed_data/conll_fget_data_processed/conll_60K_mention_test_4485.json"
     }]
 parser = argparse.ArgumentParser()
 parser.add_argument("--biencoder_model",type=str, help="Path to the biencoder model." )
@@ -16,10 +16,10 @@ parser.add_argument("--biencoder_config", type=str,help="Path to the biencoder c
 parser.add_argument("--biencoder_training_params", type=str)
 parser.add_argument("--entity_encoding",type=str,help="Path to the entity catalogue.")
 #################################################
-parser.add_argument("--entity_catalogue",type=str,default="zel_everything/scratch-shared/facebook_original_models/entity.jsonl", help="Path to the entity catalogue.")
+parser.add_argument("--entity_catalogue",type=str,default="NeSLET_everything/scratch-shared/facebook_original_models/entity.jsonl", help="Path to the entity catalogue.")
  # crossencoder
-parser.add_argument("--crossencoder_model",type=str, default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin", help="Path to the crossencoder model.")
-parser.add_argument("--crossencoder_config",type=str,default="zel_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",help="Path to the crossencoder configuration.")
+parser.add_argument("--crossencoder_model",type=str, default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.bin", help="Path to the crossencoder model.")
+parser.add_argument("--crossencoder_config",type=str,default="NeSLET_everything/scratch-shared/facebook_original_models/crossencoder_wiki_large.json",help="Path to the crossencoder configuration.")
 parser.add_argument("--top_k", type=int, default=100, help="Number of candidates retrieved by biencoder.")
 parser.add_argument("--faiss_index", type=str, default=None, help="whether to use faiss index")
 parser.add_argument("--index_path", type=str, default=None, help="path to load indexer")
@@ -80,7 +80,7 @@ for dataset in DATASETS:
 
 logger.info("\n{}".format(table))
 
-with open("zel_everything/scratch-shared/saswati/biencoder_prediction/fget_wiki_conll_0_1/prediction.json",'w') as write_file:
+with open("NeSLET_everything/scratch-shared/saswati/biencoder_prediction/fget_wiki_conll_0_1/prediction.json",'w') as write_file:
     json.dump(predictions, write_file)
 
 

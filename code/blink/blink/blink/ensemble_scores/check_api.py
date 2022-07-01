@@ -3,14 +3,14 @@ import numpy as np
 from ensemble_api import load_model,get_ensemble_score
 np.random.seed(0)
 
-data = torch.load('zel_everything/ZEL/data_dinesh/tempqa/tempqa_val_set_full_blink_prediction_model_100_with_wikidata.t7')
+data = torch.load('NeSLET_everything/ZEL/data_dinesh/tempqa/tempqa_val_set_full_blink_prediction_model_100_with_wikidata.t7')
 random_permuation = list(np.random.permutation(len(data)))
 train_split_size = int(0.8*len(data))
 training_indexes = random_permuation[:train_split_size]
 validation_indexes = random_permuation[train_split_size:]
 val_data = data[validation_indexes,:,:]
 
-checkpoint_file_path ='zel_everything/models_ensembles/tempqa/model_100/model_2/checkpoint.pth'
+checkpoint_file_path ='NeSLET_everything/models_ensembles/tempqa/model_100/model_2/checkpoint.pth'
 
 # load_model function will load the trained model
 # argument 1 is no. of input scores used

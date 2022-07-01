@@ -34,7 +34,7 @@ args = parser.parse_args()
 print(args.data_path)
 data = torch.load(args.data_path)
 no_features  = data.shape[1] - 1
-output_dir = 'zel_everything/null_entity_classifier'
+output_dir = 'NeSLET_everything/null_entity_classifier'
 
 # random_permuation = list(np.random.permutation(len(data)))
 # train_split_size = int(args.training_split_size*len(data))
