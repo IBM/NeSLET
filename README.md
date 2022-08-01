@@ -1,5 +1,5 @@
 # NeSLET
-This repo contains source code to run the experiments described in our paper "Zero-shot entity linking with less data".
+This repo contains source code to run the experiments described in our paper "Zero-shot entity linking with less data". Some of the code is a modification of https://github.com/facebookresearch/BLINK.
 
 The paper was published at the Findings of NAACL 2022. It can be found at https://aclanthology.org/2022.findings-naacl.127/ 
 
@@ -44,7 +44,7 @@ The scripts themselves say what inputs are required. Please make sure the path a
 # Data and Other Resources 
 We are unable to release the data and other resources that we have created due to licensing issues. However, we have provided information about the format and the content of each resource and data file. 
 
-The file templates are here: https://ibm.box.com/s/pm3yzd5y1wlp9ztu93ruzaad9f7l5gwe
+The file templates are here: https://ibm.box.com/s/gcmrp05w7ccy5j9b45d0adcafbmqd8nl
 
 ## Description of the Files
 
@@ -55,4 +55,6 @@ The file templates are here: https://ibm.box.com/s/pm3yzd5y1wlp9ztu93ruzaad9f7l5
 - `dbpedia_2020_types.t7` has the embedding for each type. Row i will have the embedding of type i. `./code/blink/data_preparation/create_bert_embedding_for_types.py` can be used to create these embeddings. It will take as input.
 - `entity_token_ids_128.t7` contains the token ids of the entity descriptions. For each entity, create a sequence `[CLS]Entity title[SEP]Entity description[SEP]`. Then tokenize the sequence as suitable for BERT. The ith row of this matrix will correspond to the ith entity in `entity.jsonl`.
 
-  
+Additional pointers:
+- `entity.jsonl` and `entity_token_ids_128.t7` can be downloaded from https://github.com/facebookresearch/BLINK
+- A large dataset having mappings from mention (and context) to wikipedia entity can be obtained from https://github.com/facebookresearch/KILT#additional-data
